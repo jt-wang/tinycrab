@@ -304,24 +304,9 @@ export class LocalBackend implements Backend {
   }
 
   async close(): Promise<void> {
-    // Stop all running agent servers to free up ports
-    const stopPromises: Promise<void>[] = [];
-    for (const [_id, record] of this.agents) {
-      if (record.info.status === "running" && record.info.port) {
-        stopPromises.push(
-          fetch(`http://127.0.0.1:${record.info.port}/stop`, { method: "POST" })
-            .then(() => {})
-            .catch(() => {}) // Ignore errors - server might already be stopped
-        );
-      }
-    }
-    await Promise.all(stopPromises);
-
-    // Give servers time to shut down and release ports
-    if (stopPromises.length > 0) {
-      await new Promise((resolve) => setTimeout(resolve, 200));
-    }
-
+    // Don't stop agent servers on close - they should keep running in the background
+    // The close() method is for releasing SDK resources, not stopping persistent agents
+    // Use agent.stop() or agent.destroy() to explicitly stop an agent
     this.agents.clear();
   }
 }
