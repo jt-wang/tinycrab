@@ -181,14 +181,11 @@ export class SessionManager {
     // Use type assertion for dynamic provider/model from env vars
     const model = (getModel as any)(provider, modelId);
 
-    // Combine coding tools with any additional tools (e.g., memory)
-    const tools = this.config.additionalTools
-      ? [...codingTools, ...this.config.additionalTools]
-      : codingTools;
-
     const { session } = await createAgentSession({
       model,
-      tools: tools as any,
+      tools: codingTools,
+      // Custom tools are registered separately so they appear in the model's tool list
+      customTools: this.config.additionalTools as any,
       cwd: this.config.workspace,
       agentDir: this.config.agentDir,
       authStorage: this.config.authStorage,

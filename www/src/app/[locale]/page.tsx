@@ -14,7 +14,7 @@ import {
   FolderOpen,
   MessageSquare,
   Brain,
-  Zap,
+  Clock,
   GitBranch,
   ArrowRight,
   Sparkles,
@@ -76,7 +76,7 @@ $ curl -X POST localhost:8080/chat \\
     { icon: FolderOpen, key: 'workspace' },
     { icon: MessageSquare, key: 'session' },
     { icon: Brain, key: 'memory' },
-    { icon: Zap, key: 'providers' },
+    { icon: Clock, key: 'scheduling' },
     { icon: GitBranch, key: 'selfSpawn' },
   ];
 

@@ -72,9 +72,9 @@
       "title": "跨会话记忆",
       "description": "remember/recall 持久化知识"
     },
-    "providers": {
-      "title": "8 个 LLM 提供商",
-      "description": "OpenAI, Anthropic, Google 等"
+    "scheduling": {
+      "title": "自主调度",
+      "description": "Agent 自主安排未来任务，定时唤醒执行"
     },
     "selfSpawn": {
       "title": "自我生成",

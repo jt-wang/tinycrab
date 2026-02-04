@@ -21,6 +21,7 @@ import { FileMemoryProvider } from "./memory/file-provider.js";
 import type { MemoryProvider } from "./memory/types.js";
 import { createMemoryTools } from "./tools/memory.js";
 import { createSubagentTools } from "./tools/subagent.js";
+import { createCronTools } from "./tools/cron.js";
 import { promptWithMemoryFlush } from "./memory-flush.js";
 import { startCli } from "./channels/cli.js";
 import { startHttp } from "./channels/http.js";
@@ -107,22 +108,9 @@ async function main() {
     isSubagent: false,
   });
 
-  const sessions = new SessionManager(
-    {
-      provider: config.provider,
-      model: config.model,
-      workspace: config.workspace,
-      agentDir: config.dataDir,
-      additionalTools: [...memoryTools, ...subagentTools] as any,
-      authStorage, // Pass secure auth storage
-    },
-    {
-      maxSessions: 100,
-      sessionTtlMs: 30 * 60 * 1000, // 30 minutes
-    }
-  );
-
   // Cron service for proactive behavior
+  // Note: executeJob callback captures `sessions` by closure - it's called only after cron.start()
+  // which happens after sessions is created, so this is safe.
   const cron = new CronService({
     storePath: path.join(config.dataDir, "cron.json"),
     onEvent: (event) => {
@@ -161,6 +149,24 @@ async function main() {
       return undefined;
     },
   });
+
+  // Create cron tools for agent (schedule, list, cancel)
+  const cronTools = createCronTools(cron);
+
+  const sessions = new SessionManager(
+    {
+      provider: config.provider,
+      model: config.model,
+      workspace: config.workspace,
+      agentDir: config.dataDir,
+      additionalTools: [...memoryTools, ...subagentTools, ...cronTools] as any,
+      authStorage, // Pass secure auth storage
+    },
+    {
+      maxSessions: 100,
+      sessionTtlMs: 30 * 60 * 1000, // 30 minutes
+    }
+  );
 
   // Process messages with session-per-conversation
   const processLoop = async () => {

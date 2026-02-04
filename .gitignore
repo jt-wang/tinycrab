@@ -34,3 +34,4 @@ pids/
 
 # tinycrab data (default location is ~/.tinycrab, but in case it's in project)
 .tinycrab/
+.claude/

@@ -167,4 +167,43 @@ describe("Docker E2E (Real LLM)", () => {
     const data = (await response.json()) as { response: string };
     expect(data.response).toMatch(/Sessions|Memory|Cron/i);
   }, 30000);
+
+  it("should schedule cron job via chat", async ({ skip }) => {
+    if (!dockerAvailable) skip();
+
+    const response = await fetch(`${DOCKER_URL}/chat`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        message:
+          "Use cron_schedule to schedule a job named 'docker-test' with message 'hello' in 60 minutes. " +
+          "Confirm the job was scheduled.",
+        session_id: `cron-docker-${Date.now()}`,
+      }),
+    });
+
+    expect(response.status).toBe(200);
+
+    const data = (await response.json()) as { response: string };
+    expect(data.response.toLowerCase()).toMatch(/schedul|job|docker-test/i);
+  }, 60000);
+
+  it("should list cron jobs via chat", async ({ skip }) => {
+    if (!dockerAvailable) skip();
+
+    const response = await fetch(`${DOCKER_URL}/chat`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        message: "Use cron_list to show all scheduled cron jobs.",
+        session_id: `cron-list-docker-${Date.now()}`,
+      }),
+    });
+
+    expect(response.status).toBe(200);
+
+    const data = (await response.json()) as { response: string };
+    // Response should mention jobs or indicate none exist
+    expect(data.response.toLowerCase()).toMatch(/job|schedul|no|list/i);
+  }, 60000);
 });

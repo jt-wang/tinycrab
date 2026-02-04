@@ -72,9 +72,9 @@
       "title": "Cross-session memory",
       "description": "remember/recall for persistent knowledge"
     },
-    "providers": {
-      "title": "8 LLM providers",
-      "description": "OpenAI, Anthropic, Google, and more"
+    "scheduling": {
+      "title": "Autonomous scheduling",
+      "description": "Agents schedule future actions, wake up, act"
     },
     "selfSpawn": {
       "title": "Self-spawning",
