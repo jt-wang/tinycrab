@@ -28,13 +28,7 @@ tinycrab chat my-agent "Hello!"
 
 ## Documentation
 
-Full documentation at **[tinycrab.dev](https://tinycrab.dev)** (coming soon) or see the [`www/`](./www) directory:
-
-- [Quickstart](./www/src/app/[locale]/docs/quickstart/page.tsx)
-- [SDK Reference](./www/src/app/[locale]/docs/sdk/page.tsx)
-- [CLI Reference](./www/src/app/[locale]/docs/cli/page.tsx)
-- [HTTP API](./www/src/app/[locale]/docs/api/page.tsx)
-- [Deployment](./www/src/app/[locale]/docs/deploy/page.tsx)
+Full docs at **[tinycrab.dev](https://tinycrab.dev)**
 
 ## For AI Agents
 
@@ -43,21 +37,23 @@ If you're an AI agent looking to spawn worker agents, read [`www/public/skill.md
 ## Architecture
 
 ```
-┌─────────────┐     ┌──────────────┐     ┌─────────────────┐
-│  CLI Input  │────▶│              │────▶│                 │
-└─────────────┘     │  MessageBus  │     │  Agent Session  │
-┌─────────────┐     │              │     │  (pi-mono SDK)  │
-│ HTTP /chat  │────▶│              │◀────│                 │
-└─────────────┘     └──────────────┘     └─────────────────┘
+┌─────────────────────────────────────────────────────────────┐
+│                      SDK (src/sdk/)                         │
+│  Tinycrab → Backend (local/docker/remote) → Agent           │
+└─────────────────────────────────────────────────────────────┘
+                              │
+┌─────────────────────────────────────────────────────────────┐
+│                    Core (src/)                              │
+│  SessionManager, MessageBus, Memory, Cron, Subagent         │
+└─────────────────────────────────────────────────────────────┘
+                              │
+┌─────────────────────────────────────────────────────────────┐
+│                 pi-mono SDK (external)                      │
+│  createAgentSession, codingTools, getModel                  │
+└─────────────────────────────────────────────────────────────┘
 ```
 
-Built on [pi-mono](https://github.com/badlogic/pi-mono) by Mario Zechner, which provides the agent loop, coding tools (bash, read, write, edit, grep, find), session management, and support for 10+ LLM providers.
-
-tinycrab adds:
-- SDK for programmatic agent spawning
-- CLI for quick testing
-- HTTP API for integration
-- Docker-first deployment
+Built on [pi-mono](https://github.com/badlogic/pi-mono) by Mario Zechner, which provides the agent loop, coding tools, session management, and 10+ LLM providers.
 
 ## Deploy
 
