@@ -1,10 +1,20 @@
 name: Deploy Site
 
+# NOTE: This workflow is disabled because the Next.js site uses middleware
+# for i18n routing, which requires a server runtime (not static export).
+# Deploy to Vercel instead: https://vercel.com/new
+#
+# To re-enable for static export:
+# 1. Remove middleware.ts
+# 2. Add output: 'export' to next.config.ts
+# 3. Change artifact path to www/out
+
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'www/**'
+  # Disabled - use Vercel for deployment
+  # push:
+  #   branches: [main]
+  #   paths:
+  #     - 'www/**'
   workflow_dispatch:
 
 permissions:
