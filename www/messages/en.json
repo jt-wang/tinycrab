@@ -25,11 +25,31 @@
     "title": "Built for Speed",
     "description": "You're building something that involves AI agents. You need one running now.",
     "items": {
-      "testing": "Testing how your app handles AI responses",
-      "prototyping": "Prototyping an AI-powered workflow",
-      "platform": "Building an AI-agent-first platform",
-      "simulation": "Creating multi-agent simulations",
-      "swarm": "Spawning agent swarms (coming soon)"
+      "testing": {
+        "before": "Testing how your app handles ",
+        "highlight": "AI responses",
+        "after": ""
+      },
+      "prototyping": {
+        "before": "Prototyping an ",
+        "highlight": "AI-powered workflow",
+        "after": ""
+      },
+      "platform": {
+        "before": "Building an ",
+        "highlight": "AI-agent-first",
+        "after": " platform"
+      },
+      "simulation": {
+        "before": "Creating ",
+        "highlight": "multi-agent",
+        "after": " simulations"
+      },
+      "swarm": {
+        "before": "Spawning ",
+        "highlight": "agent swarms",
+        "after": ""
+      }
     },
     "conclusion": "You don't need the most powerful agent. You need an AI agent running right now."
   },
@@ -77,7 +97,7 @@
   },
   "cta": {
     "ready": "Ready to spawn?",
-    "future": "Coming in next version: Agent Swarm - coordinate multiple agents working together"
+    "future": "Coming soon: Agent Swarm - coordinate multiple agents working together"
   },
   "footer": {
     "tagline": "Spawn AI agents in seconds.",
@@ -86,7 +106,7 @@
     "community": "Community",
     "issues": "Issues",
     "forAgents": "For AI Agents",
-    "copyright": "tinycrab. MIT License.",
+    "license": "MIT License.",
     "builtFor": "Built for developers who move fast."
   },
   "agents": {
@@ -168,7 +188,9 @@
       "stop": "stop",
       "stopDesc": "Stop an agent (keeps files).",
       "cleanup": "cleanup",
-      "cleanupDesc": "Stop agent and delete all files."
+      "cleanupDesc": "Stop agent and delete all files.",
+      "http": "HTTP API",
+      "httpDesc": "Each spawned agent runs an HTTP server. You can communicate with it directly:"
     },
     "api": {
       "title": "HTTP API",
@@ -188,8 +210,13 @@
       "dockerDesc": "Run tinycrab in a container:",
       "dockerCompose": "Docker Compose",
       "railway": "Railway",
-      "railwayDesc": "One-click deploy to Railway:",
-      "railwayEnv": "Set OPENAI_API_KEY in environment variables.",
+      "railwayDesc": "Deploy to Railway using the GHCR image:",
+      "railwaySteps": {
+        "step1": "Create a new project on Railway",
+        "step2": "Select \"Deploy from Docker Image\"",
+        "step3": "Use image: ghcr.io/jt-wang/tinycrab",
+        "step4": "Add environment variable OPENAI_API_KEY"
+      },
       "flyio": "Fly.io",
       "flyioDesc": "Deploy to Fly.io:",
       "render": "Render",
@@ -199,7 +226,9 @@
         "step2": "Select \"Deploy an existing image from a registry\"",
         "step3": "Use image: ghcr.io/jt-wang/tinycrab",
         "step4": "Add environment variable OPENAI_API_KEY"
-      }
+      },
+      "usage": "Communicate with Your Agent",
+      "usageDesc": "Once deployed, communicate with your agent via HTTP:"
     }
   }
 }

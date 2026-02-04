@@ -22,7 +22,7 @@ export function CodeBlock({ code, lang = 'bash', className }: CodeBlockProps) {
 
   if (!html) {
     return (
-      <pre className={cn('rounded-lg bg-[#0d1117] p-4 overflow-x-auto text-sm', className)}>
+      <pre className={cn('rounded-lg bg-[#0d1117] p-4 text-sm whitespace-pre-wrap break-words', className)}>
         <code className="font-mono text-[#c9d1d9]">{code}</code>
       </pre>
     );
@@ -31,7 +31,7 @@ export function CodeBlock({ code, lang = 'bash', className }: CodeBlockProps) {
   return (
     <div
       className={cn(
-        'rounded-lg overflow-hidden text-sm [&_pre]:p-4 [&_pre]:overflow-x-auto [&_pre]:bg-[#0d1117]',
+        'rounded-lg overflow-hidden text-sm [&_pre]:p-4 [&_pre]:bg-[#0d1117] [&_pre]:whitespace-pre-wrap [&_code]:break-words',
         className
       )}
       dangerouslySetInnerHTML={{ __html: html }}

@@ -76,7 +76,7 @@ export function Footer() {
             <ul className="space-y-2.5 text-sm">
               <li>
                 <a
-                  href="https://github.com/anthropics/tinycrab"
+                  href="https://github.com/jt-wang/tinycrab"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
@@ -87,7 +87,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="https://github.com/anthropics/tinycrab/issues"
+                  href="https://github.com/jt-wang/tinycrab/issues"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-foreground transition-colors"
@@ -107,7 +107,18 @@ export function Footer() {
         <Separator className="my-8 bg-border/40" />
 
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-          <p>© {year} {t('copyright')}</p>
+          <p>
+            © {year}{' '}
+            <a
+              href="https://github.com/jt-wang"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-foreground transition-colors"
+            >
+              Jingtao Wang
+            </a>
+            . {t('license')}
+          </p>
           <p>{t('builtFor')}</p>
         </div>
       </div>

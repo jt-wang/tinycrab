@@ -1,6 +1,7 @@
 import { useTranslations } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 import { CodeBlock } from '@/components/code-block';
+import { DocsNav } from '@/components/docs-nav';
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -84,6 +85,8 @@ await agent.destroy(options?: {
             lang="typescript"
           />
         </section>
+
+        <DocsNav current="sdk" />
       </div>
     </div>
   );

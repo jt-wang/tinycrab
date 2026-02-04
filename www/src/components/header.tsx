@@ -42,7 +42,7 @@ export function Header() {
             </Link>
           ))}
           <a
-            href="https://github.com/anthropics/tinycrab"
+            href="https://github.com/jt-wang/tinycrab"
             target="_blank"
             rel="noopener noreferrer"
             className="text-muted-foreground hover:text-foreground transition-colors"
@@ -79,7 +79,7 @@ export function Header() {
             </Link>
           ))}
           <a
-            href="https://github.com/anthropics/tinycrab"
+            href="https://github.com/jt-wang/tinycrab"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 py-2.5 text-muted-foreground hover:text-foreground transition-colors"

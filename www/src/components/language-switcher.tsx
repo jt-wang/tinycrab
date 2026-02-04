@@ -37,7 +37,7 @@ export function LanguageSwitcher() {
         variant="ghost"
         size="sm"
         onClick={() => setIsOpen(!isOpen)}
-        className="gap-2 text-muted-foreground hover:text-foreground"
+        className="gap-2 text-muted-foreground hover:text-foreground cursor-pointer"
       >
         <Globe className="w-4 h-4" />
         <span className="text-sm">{localeNames[locale]}</span>

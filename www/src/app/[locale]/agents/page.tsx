@@ -20,20 +20,19 @@ export default async function AgentsPage({ params }: Props) {
 function AgentsContent() {
   const t = useTranslations('agents');
 
-  const cliCode = `# Install
-npm install -g tinycrab
+  const cliCode = `$ npm install -g tinycrab
+$ export OPENAI_API_KEY=sk-xxx
 
-# Set API key
-export OPENAI_API_KEY=sk-xxx
+$ tinycrab spawn worker
+# → Agent 'worker' spawned
+# → Server running on port 9000
 
-# Spawn (starts HTTP server for this agent)
-tinycrab spawn worker
+$ tinycrab chat worker "Create a config file"
+# → [worker]: I've created config.json with default settings.
+# → (session: session-a1b2c3d4)
 
-# Chat
-tinycrab chat worker "Do something"
-
-# Clean up
-tinycrab cleanup worker`;
+$ tinycrab cleanup worker
+# → Agent 'worker' cleaned up`;
 
   const sdkCode = `import { Tinycrab } from 'tinycrab';
 
@@ -42,25 +41,30 @@ const tc = new Tinycrab({
 });
 
 const agent = await tc.agent('worker');
-const result = await agent.chat('Do something');
+const result = await agent.chat('List files in current directory');
+
+console.log(result.response);
+// → Here are the files: package.json, src/, README.md
+console.log(result.sessionId);
+// → session-a1b2c3d4e5f6
 
 await agent.destroy({ cleanup: true });`;
 
-  const httpCode = `# First spawn an agent
-tinycrab spawn worker
-# Output: Server running on port 9000
+  const httpCode = `$ tinycrab spawn worker
+# → Server running on port 9000
 
-# Then call HTTP
-curl -X POST http://localhost:9000/chat \\
+$ curl -X POST http://localhost:9000/chat \\
   -H "Content-Type: application/json" \\
-  -d '{"message": "Hello"}'`;
+  -d '{"message": "Hello"}'
+# → {"response": "Hello! I'm ready to help.",
+#    "session_id": "session-a1b2c3d4"}`;
 
-  const sessionCode = `# First message
-tinycrab chat worker "My name is Alice"
-# Response includes: (session: abc123)
+  const sessionCode = `$ tinycrab chat worker "My name is Alice"
+# → [worker]: Nice to meet you, Alice!
+# → (session: session-abc123)
 
-# Continue with -s flag
-tinycrab chat worker "What's my name?" -s abc123`;
+$ tinycrab chat worker "What's my name?" -s session-abc123
+# → [worker]: Your name is Alice!`;
 
   const tools = [
     { code: 'bash', desc: t('tools.bash') },
@@ -90,7 +94,14 @@ tinycrab chat worker "What's my name?" -s abc123`;
         <Card className="mb-12 border-crab/30 bg-crab/5">
           <CardContent className="p-5">
             <p className="text-sm text-muted-foreground mb-2">{t('reference')}:</p>
-            <code className="text-crab font-mono">GET https://tinycrab.dev/skill.md</code>
+            <a
+              href="https://tinycrab.dev/skill.md"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-crab font-mono hover:underline"
+            >
+              GET https://tinycrab.dev/skill.md
+            </a>
           </CardContent>
         </Card>
 

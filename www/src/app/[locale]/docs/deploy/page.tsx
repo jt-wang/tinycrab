@@ -1,7 +1,7 @@
 import { useTranslations } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 import { CodeBlock } from '@/components/code-block';
-import { Button } from '@/components/ui/button';
+import { DocsNav } from '@/components/docs-nav';
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -50,14 +50,18 @@ services:
         <section className="mb-12" id="railway">
           <h2 className="text-2xl font-semibold text-foreground mb-4">{t('railway')}</h2>
           <p className="text-muted-foreground mb-4">{t('railwayDesc')}</p>
-          <Button variant="outline" asChild className="mb-4">
-            <a href="https://railway.app/template/tinycrab" target="_blank" rel="noopener">
-              Deploy to Railway
-            </a>
-          </Button>
-          <p className="text-sm text-muted-foreground">
-            {t('railwayEnv')}
-          </p>
+          <ol className="list-decimal list-inside text-muted-foreground space-y-2 mb-4">
+            <li>{t('railwaySteps.step1')}</li>
+            <li>{t('railwaySteps.step2')}</li>
+            <li>
+              {t('railwaySteps.step3').split('ghcr.io/jt-wang/tinycrab')[0]}
+              <code className="text-foreground">ghcr.io/jt-wang/tinycrab</code>
+            </li>
+            <li>
+              {t('railwaySteps.step4').split('OPENAI_API_KEY')[0]}
+              <code className="text-foreground">OPENAI_API_KEY</code>
+            </li>
+          </ol>
         </section>
 
         <section className="mb-12" id="flyio">
@@ -79,7 +83,7 @@ fly secrets set OPENAI_API_KEY=sk-xxx`}
           />
         </section>
 
-        <section id="render">
+        <section className="mb-12" id="render">
           <h2 className="text-2xl font-semibold text-foreground mb-4">{t('render')}</h2>
           <p className="text-muted-foreground mb-4">{t('renderDesc')}</p>
           <ol className="list-decimal list-inside text-muted-foreground space-y-2">
@@ -95,6 +99,26 @@ fly secrets set OPENAI_API_KEY=sk-xxx`}
             </li>
           </ol>
         </section>
+
+        <section id="usage">
+          <h2 className="text-2xl font-semibold text-foreground mb-4">{t('usage')}</h2>
+          <p className="text-muted-foreground mb-4">{t('usageDesc')}</p>
+          <CodeBlock
+            code={`$ curl -X POST https://your-deployment.com/chat \\
+  -H "Content-Type: application/json" \\
+  -d '{"message": "Hello"}'
+# → {"response": "Hello! How can I help?",
+#    "session_id": "session-a1b2c3d4"}
+
+# Continue conversation with session_id
+$ curl -X POST https://your-deployment.com/chat \\
+  -H "Content-Type: application/json" \\
+  -d '{"message": "What did I say?", "session_id": "session-a1b2c3d4"}'`}
+            lang="bash"
+          />
+        </section>
+
+        <DocsNav current="deploy" />
       </div>
     </div>
   );

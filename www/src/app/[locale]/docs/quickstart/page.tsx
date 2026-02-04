@@ -2,8 +2,8 @@ import { useTranslations } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 import { Card, CardContent } from '@/components/ui/card';
 import { CodeBlock } from '@/components/code-block';
-import Link from 'next/link';
-import { CheckCircle2, Code2, Terminal, Server } from 'lucide-react';
+import { DocsNav } from '@/components/docs-nav';
+import { CheckCircle2 } from 'lucide-react';
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -16,7 +16,6 @@ export default async function QuickstartPage({ params }: Props) {
 
 function QuickstartContent() {
   const t = useTranslations('docs.quickstart');
-  const nav = useTranslations('docs.index');
 
   return (
     <div className="py-20">
@@ -45,17 +44,17 @@ function QuickstartContent() {
         <div className="space-y-10">
           <section>
             <h2 className="text-xl font-semibold text-foreground mb-4">{t('step1')}</h2>
-            <CodeBlock code="npm install -g tinycrab" lang="bash" />
+            <CodeBlock code="$ npm install -g tinycrab" lang="bash" />
           </section>
 
           <section>
             <h2 className="text-xl font-semibold text-foreground mb-4">{t('step2')}</h2>
             <CodeBlock
               code={`# OpenAI (default)
-export OPENAI_API_KEY=sk-xxx
+$ export OPENAI_API_KEY=sk-xxx
 
 # Or Anthropic
-export ANTHROPIC_API_KEY=sk-xxx`}
+$ export ANTHROPIC_API_KEY=sk-xxx`}
               lang="bash"
             />
           </section>
@@ -63,12 +62,9 @@ export ANTHROPIC_API_KEY=sk-xxx`}
           <section>
             <h2 className="text-xl font-semibold text-foreground mb-4">{t('step3')}</h2>
             <CodeBlock
-              code={`# Create and start an agent
-tinycrab spawn my-agent
-
-# Output:
-# Agent 'my-agent' spawned
-# Server running on port 9000`}
+              code={`$ tinycrab spawn my-agent
+# → Agent 'my-agent' spawned
+# → Server running on port 9000`}
               lang="bash"
             />
           </section>
@@ -76,11 +72,15 @@ tinycrab spawn my-agent
           <section>
             <h2 className="text-xl font-semibold text-foreground mb-4">{t('step4')}</h2>
             <CodeBlock
-              code={`# Send a message
-tinycrab chat my-agent "What can you help me with?"
+              code={`$ tinycrab chat my-agent "Create a hello world script"
+# → [my-agent]: I've created hello.py that prints "Hello, World!"
+# → (session: session-a1b2c3d4)
 
 # Interactive mode
-tinycrab chat my-agent -i`}
+$ tinycrab chat my-agent -i
+# → Interactive session with 'my-agent'
+# → Type 'exit' to quit.
+# → my-agent> _`}
               lang="bash"
             />
           </section>
@@ -88,53 +88,21 @@ tinycrab chat my-agent -i`}
           <section>
             <h2 className="text-xl font-semibold text-foreground mb-4">{t('step5')}</h2>
             <CodeBlock
-              code={`# List all agents
-tinycrab list
+              code={`$ tinycrab list
+# → NAME          STATUS      PORT
+# → my-agent      running     9000
 
-# Stop an agent (keeps files)
-tinycrab stop my-agent
+$ tinycrab stop my-agent
+# → Agent 'my-agent' stopped
 
-# Delete agent and all files
-tinycrab cleanup my-agent`}
+$ tinycrab cleanup my-agent
+# → Agent 'my-agent' cleaned up`}
               lang="bash"
             />
           </section>
         </div>
 
-        {/* Next Steps */}
-        <h2 className="text-xl font-semibold text-foreground mt-12 mb-6">{t('nextSteps')}</h2>
-        <div className="grid sm:grid-cols-3 gap-4">
-          <Link href="/docs/sdk">
-            <Card className="h-full border-border/50 hover:border-crab/50 transition-colors cursor-pointer">
-              <CardContent className="p-4 text-center">
-                <div className="w-9 h-9 rounded-lg bg-muted flex items-center justify-center mx-auto mb-3">
-                  <Code2 className="w-4 h-4 text-muted-foreground" />
-                </div>
-                <span className="font-medium text-foreground text-sm">{nav('sdk.title')}</span>
-              </CardContent>
-            </Card>
-          </Link>
-          <Link href="/docs/cli">
-            <Card className="h-full border-border/50 hover:border-crab/50 transition-colors cursor-pointer">
-              <CardContent className="p-4 text-center">
-                <div className="w-9 h-9 rounded-lg bg-muted flex items-center justify-center mx-auto mb-3">
-                  <Terminal className="w-4 h-4 text-muted-foreground" />
-                </div>
-                <span className="font-medium text-foreground text-sm">{nav('cli.title')}</span>
-              </CardContent>
-            </Card>
-          </Link>
-          <Link href="/docs/deploy">
-            <Card className="h-full border-border/50 hover:border-crab/50 transition-colors cursor-pointer">
-              <CardContent className="p-4 text-center">
-                <div className="w-9 h-9 rounded-lg bg-muted flex items-center justify-center mx-auto mb-3">
-                  <Server className="w-4 h-4 text-muted-foreground" />
-                </div>
-                <span className="font-medium text-foreground text-sm">{nav('deploy.title')}</span>
-              </CardContent>
-            </Card>
-          </Link>
-        </div>
+        <DocsNav current="quickstart" />
       </div>
     </div>
   );

@@ -25,11 +25,31 @@
     "title": "为速度而生",
     "description": "你正在构建涉及 AI agent 的项目，你需要一个现在就能跑的。",
     "items": {
-      "testing": "测试应用如何处理 AI 响应",
-      "prototyping": "原型化 AI 驱动的工作流",
-      "platform": "构建 AI-agent-first 平台",
-      "simulation": "创建多 agent 模拟场景",
-      "swarm": "启动 agent 集群（即将推出）"
+      "testing": {
+        "before": "测试应用如何处理 ",
+        "highlight": "AI 响应",
+        "after": ""
+      },
+      "prototyping": {
+        "before": "原型化 ",
+        "highlight": "AI 驱动",
+        "after": "的工作流"
+      },
+      "platform": {
+        "before": "构建 ",
+        "highlight": "AI-agent-first",
+        "after": " 平台"
+      },
+      "simulation": {
+        "before": "创建",
+        "highlight": "多 agent",
+        "after": " 模拟场景"
+      },
+      "swarm": {
+        "before": "启动 ",
+        "highlight": "agent 集群",
+        "after": ""
+      }
     },
     "conclusion": "你不需要功能最全的 agent，你需要的是一个现在就能运行的 AI agent。"
   },
@@ -77,7 +97,7 @@
   },
   "cta": {
     "ready": "准备好启动了吗？",
-    "future": "下版本预告：Agent Swarm - 协调多个 agent 协同工作"
+    "future": "即将推出：Agent Swarm - 协调多个 agent 协同工作"
   },
   "footer": {
     "tagline": "秒级启动 AI agent。",
@@ -86,7 +106,7 @@
     "community": "社区",
     "issues": "问题反馈",
     "forAgents": "AI Agent 专用",
-    "copyright": "tinycrab. MIT 许可证。",
+    "license": "MIT 许可证。",
     "builtFor": "为追求效率的开发者而生。"
   },
   "agents": {
@@ -168,7 +188,9 @@
       "stop": "stop",
       "stopDesc": "停止 agent（保留文件）。",
       "cleanup": "cleanup",
-      "cleanupDesc": "停止 agent 并删除所有文件。"
+      "cleanupDesc": "停止 agent 并删除所有文件。",
+      "http": "HTTP API",
+      "httpDesc": "每个启动的 agent 都会运行一个 HTTP 服务器，你可以直接与它通信："
     },
     "api": {
       "title": "HTTP API",
@@ -188,8 +210,13 @@
       "dockerDesc": "在容器中运行 tinycrab：",
       "dockerCompose": "Docker Compose",
       "railway": "Railway",
-      "railwayDesc": "一键部署到 Railway：",
-      "railwayEnv": "在环境变量中设置 OPENAI_API_KEY。",
+      "railwayDesc": "使用 GHCR 镜像部署到 Railway：",
+      "railwaySteps": {
+        "step1": "在 Railway 上创建新项目",
+        "step2": "选择「从 Docker 镜像部署」",
+        "step3": "使用镜像：ghcr.io/jt-wang/tinycrab",
+        "step4": "添加环境变量 OPENAI_API_KEY"
+      },
       "flyio": "Fly.io",
       "flyioDesc": "部署到 Fly.io：",
       "render": "Render",
@@ -199,7 +226,9 @@
         "step2": "选择「从注册表部署现有镜像」",
         "step3": "使用镜像：ghcr.io/jt-wang/tinycrab",
         "step4": "添加环境变量 OPENAI_API_KEY"
-      }
+      },
+      "usage": "与 Agent 通信",
+      "usageDesc": "部署完成后，通过 HTTP 与 agent 通信："
     }
   }
 }

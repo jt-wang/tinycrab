@@ -1,6 +1,7 @@
 import { useTranslations } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 import { CodeBlock } from '@/components/code-block';
+import { DocsNav } from '@/components/docs-nav';
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -59,11 +60,29 @@ Options:
           <CodeBlock code="tinycrab stop <agent-id>" lang="bash" />
         </section>
 
-        <section>
+        <section className="mb-12">
           <h2 className="text-2xl font-semibold text-foreground mb-4">{t('cleanup')}</h2>
           <p className="text-muted-foreground mb-4">{t('cleanupDesc')}</p>
           <CodeBlock code="tinycrab cleanup <agent-id>" lang="bash" />
         </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold text-foreground mb-4">{t('http')}</h2>
+          <p className="text-muted-foreground mb-4">{t('httpDesc')}</p>
+          <CodeBlock
+            code={`$ tinycrab spawn my-agent
+# → Server running on port 9000
+
+$ curl -X POST http://localhost:9000/chat \\
+  -H "Content-Type: application/json" \\
+  -d '{"message": "Hello"}'
+# → {"response": "Hello! How can I help?",
+#    "session_id": "session-a1b2c3d4"}`}
+            lang="bash"
+          />
+        </section>
+
+        <DocsNav current="cli" />
       </div>
     </div>
   );

@@ -39,29 +39,37 @@ function HomeContent() {
 const tc = new Tinycrab({ apiKey: process.env.OPENAI_API_KEY });
 const agent = await tc.agent('worker');
 
-await agent.chat('Write a script to process data');
+const result = await agent.chat('Write a hello world script');
+console.log(result.response);
+// → I've created hello.py with a simple hello world script.
+//   The file prints "Hello, World!" when run.
+
 await agent.destroy({ cleanup: true });`;
 
-  const cliCode = `# Install
-npm install -g tinycrab
+  const cliCode = `$ npm install -g tinycrab
 
-# Spawn an agent
-tinycrab spawn my-agent
+$ tinycrab spawn my-agent
+# → Agent 'my-agent' spawned
+# → Server running on port 9000
 
-# Chat with it
-tinycrab chat my-agent "Analyze the logs"
+$ tinycrab chat my-agent "Create a README"
+# → [my-agent]: I've created README.md with project
+#   documentation including installation and usage.
+# → (session: abc123)
 
-# Clean up
-tinycrab cleanup my-agent`;
+$ tinycrab cleanup my-agent
+# → Agent 'my-agent' cleaned up`;
 
-  const dockerCode = `# One command, agent running
-docker run -p 8080:8080 \\
+  const dockerCode = `$ docker run -p 8080:8080 \\
   -e OPENAI_API_KEY=sk-xxx \\
   ghcr.io/jt-wang/tinycrab
+# → Agent server running on port 8080
 
-# Now call it
-curl -X POST localhost:8080/chat \\
-  -d '{"message": "Hello"}'`;
+$ curl -X POST localhost:8080/chat \\
+  -H "Content-Type: application/json" \\
+  -d '{"message": "Hello"}'
+# → {"response": "Hello! How can I help you?",
+#    "session_id": "session-a1b2c3..."}`;
 
   const features = [
     { icon: Terminal, key: 'coding' },
@@ -121,28 +129,56 @@ curl -X POST localhost:8080/chat \\
       <section className="py-20">
         <div className="mx-auto max-w-3xl px-6">
           <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
-            <CardContent className="p-8">
+            <CardContent className="p-8 text-center">
               <h2 className="text-2xl font-semibold text-foreground mb-4">
                 {t('why.title')}
               </h2>
               <p className="text-muted-foreground mb-6">{t('why.description')}</p>
 
-              <ul className="space-y-3 mb-6">
-                {(['testing', 'prototyping', 'platform', 'simulation', 'swarm'] as const).map(
-                  (key) => (
-                    <li key={key} className="flex items-start gap-3 text-muted-foreground">
-                      <span className="text-crab mt-1">•</span>
-                      <span>
-                        {t(`why.items.${key}`)}
-                        {key === 'swarm' && (
-                          <Badge variant="outline" className="ml-2 text-xs">
-                            soon
-                          </Badge>
-                        )}
-                      </span>
-                    </li>
-                  )
-                )}
+              <ul className="space-y-3 mb-6 inline-block text-left">
+                <li className="flex items-start gap-3 text-muted-foreground">
+                  <span className="text-crab mt-1">•</span>
+                  <span>
+                    {t('why.items.testing.before')}
+                    <span className="text-crab">{t('why.items.testing.highlight')}</span>
+                    {t('why.items.testing.after')}
+                  </span>
+                </li>
+                <li className="flex items-start gap-3 text-muted-foreground">
+                  <span className="text-crab mt-1">•</span>
+                  <span>
+                    {t('why.items.prototyping.before')}
+                    <span className="text-crab">{t('why.items.prototyping.highlight')}</span>
+                    {t('why.items.prototyping.after')}
+                  </span>
+                </li>
+                <li className="flex items-start gap-3 text-muted-foreground">
+                  <span className="text-crab mt-1">•</span>
+                  <span>
+                    {t('why.items.platform.before')}
+                    <span className="text-crab">{t('why.items.platform.highlight')}</span>
+                    {t('why.items.platform.after')}
+                  </span>
+                </li>
+                <li className="flex items-start gap-3 text-muted-foreground">
+                  <span className="text-crab mt-1">•</span>
+                  <span>
+                    {t('why.items.simulation.before')}
+                    <span className="text-crab">{t('why.items.simulation.highlight')}</span>
+                    {t('why.items.simulation.after')}
+                  </span>
+                </li>
+                <li className="flex items-start gap-3 text-muted-foreground">
+                  <span className="text-crab mt-1">•</span>
+                  <span>
+                    {t('why.items.swarm.before')}
+                    <span className="text-crab">{t('why.items.swarm.highlight')}</span>
+                    {t('why.items.swarm.after')}
+                    <Badge variant="outline" className="ml-2 text-xs">
+                      soon
+                    </Badge>
+                  </span>
+                </li>
               </ul>
 
               <p className="text-foreground font-medium">{t('why.conclusion')}</p>
@@ -248,19 +284,16 @@ curl -X POST localhost:8080/chat \\
       <section className="py-20 bg-muted/30">
         <div className="mx-auto max-w-3xl px-6 text-center">
           <h2 className="text-2xl font-semibold text-foreground mb-3">{t('deploy.title')}</h2>
-          <p className="text-muted-foreground mb-8">{t('deploy.description')}</p>
+          <p className="text-muted-foreground mb-6">{t('deploy.description')}</p>
 
-          <div className="flex flex-wrap justify-center gap-3">
+          <CodeBlock
+            code={`docker run -p 8080:8080 -e OPENAI_API_KEY=sk-xxx ghcr.io/jt-wang/tinycrab`}
+            lang="bash"
+          />
+
+          <div className="flex flex-wrap justify-center gap-3 mt-6">
             <Button variant="outline" asChild>
-              <a href="https://railway.app/template/tinycrab" target="_blank" rel="noopener">
-                Railway
-              </a>
-            </Button>
-            <Button variant="outline" asChild>
-              <Link href="/docs/deploy#flyio">Fly.io</Link>
-            </Button>
-            <Button variant="outline" asChild>
-              <Link href="/docs/deploy#docker">Docker</Link>
+              <Link href="/docs/deploy">Deploy Guide</Link>
             </Button>
           </div>
         </div>

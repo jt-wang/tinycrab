@@ -8,9 +8,12 @@ Built with TypeScript + pi-mono SDK (~200 LOC) by leveraging `@mariozechner/pi-c
 
 ### Railway
 
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/tinycrab)
+Deploy using the GHCR image:
 
-After clicking, set `OPENAI_API_KEY` or `ANTHROPIC_API_KEY` in Railway's Variables tab.
+1. Create a new project on Railway
+2. Select "Deploy from Docker Image"
+3. Use image: `ghcr.io/jt-wang/tinycrab`
+4. Add environment variable `OPENAI_API_KEY`
 
 ### Fly.io
 
@@ -180,10 +183,7 @@ fly secrets set ANTHROPIC_API_KEY=sk-xxx
 ```
 
 **Railway:**
-```bash
-railway login
-railway up
-```
+Deploy from Docker image `ghcr.io/jt-wang/tinycrab` and set `OPENAI_API_KEY`.
 
 **Render:**
 Connect your repository and set `ANTHROPIC_API_KEY` in the dashboard.
