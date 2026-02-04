@@ -14,9 +14,9 @@ export function Footer() {
   return (
     <footer className="border-t border-border/40 mt-20">
       <div className="mx-auto max-w-6xl px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 text-center md:text-left">
           <div>
-            <Link href="/" className="flex items-center gap-2.5 font-semibold text-foreground mb-4">
+            <Link href="/" className="inline-flex items-center gap-2.5 font-semibold text-foreground mb-4">
               <CrabIcon className="w-5 h-5 text-crab" />
               <span>tinycrab</span>
             </Link>
@@ -85,7 +85,7 @@ export function Footer() {
                   href="https://github.com/jt-wang/tinycrab"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+                  className="inline-flex items-center justify-center md:justify-start gap-2 text-muted-foreground hover:text-foreground transition-colors"
                 >
                   <Github className="w-4 h-4" />
                   GitHub

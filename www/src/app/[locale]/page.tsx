@@ -4,7 +4,6 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import { CrabSpawnDemo } from '@/components/crab-spawn-demo';
 import { CodeBlock } from '@/components/code-block';
 import Link from 'next/link';
 import {
@@ -17,6 +16,9 @@ import {
   Clock,
   GitBranch,
   ArrowRight,
+  Monitor,
+  FlaskConical,
+  Rocket,
   Sparkles,
 } from 'lucide-react';
 
@@ -83,21 +85,40 @@ $ curl -X POST localhost:8080/chat \\
   return (
     <div className="relative">
       {/* Hero */}
-      <section className="py-20 md:py-28">
+      <section className="py-16 md:py-24">
         <div className="mx-auto max-w-6xl px-6 text-center">
           <Badge variant="secondary" className="mb-6">
             <Sparkles className="w-3 h-3 mr-1.5" />
             {t('hero.badge')}
           </Badge>
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-4">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground mb-3">
             {t('hero.title')}{' '}
             <span className="text-crab">{t('hero.titleHighlight')}</span>
           </h1>
 
-          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            {t('hero.description')}
+          <p className="text-xl md:text-2xl text-muted-foreground mb-4">
+            {t('hero.subtitle')}
           </p>
+
+          <div className="flex items-center justify-center gap-2 md:gap-3 text-lg md:text-xl font-semibold mb-8 flex-wrap">
+            <span className="text-foreground">{t('hero.flowDev')}</span>
+            <ArrowRight className="w-4 h-4 md:w-5 md:h-5 text-crab" />
+            <span className="text-foreground">{t('hero.flowTest')}</span>
+            <ArrowRight className="w-4 h-4 md:w-5 md:h-5 text-crab" />
+            <span className="text-foreground">{t('hero.flowCI')}</span>
+            <ArrowRight className="w-4 h-4 md:w-5 md:h-5 text-crab" />
+            <span className="text-foreground">{t('hero.flowProd')}</span>
+          </div>
+
+          {/* Command Demo */}
+          <div className="max-w-md mx-auto mb-8">
+            <div className="rounded-lg border border-border/50 bg-card/50 backdrop-blur-sm p-4 font-mono text-sm text-center">
+              <div className="text-muted-foreground">{t('hero.command')}</div>
+              <div className="text-crab mt-1">{t('hero.commandResult')}</div>
+            </div>
+            <p className="text-sm text-muted-foreground mt-3">{t('hero.commandCaption')}</p>
+          </div>
 
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Button asChild size="lg">
@@ -113,79 +134,115 @@ $ curl -X POST localhost:8080/chat \\
         </div>
       </section>
 
-      {/* Crab Spawn Demo */}
-      <section className="py-16">
+      {/* Four Scenarios */}
+      <section className="py-16 bg-muted/30">
         <div className="mx-auto max-w-6xl px-6">
-          <h2 className="text-xl font-semibold text-center mb-8 text-foreground">
-            {t('spawn.title')}
-          </h2>
-          <CrabSpawnDemo />
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-2">
+              {t('scenarios.title')}
+            </h2>
+            <p className="text-muted-foreground">{t('scenarios.subtitle')}</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Local Dev */}
+            <Card className="border-border/50 overflow-hidden">
+              <CardContent className="p-0">
+                <div className="p-5 border-b border-border/50">
+                  <div className="flex items-center gap-3 justify-center md:justify-start">
+                    <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center">
+                      <Monitor className="w-5 h-5 text-muted-foreground" />
+                    </div>
+                    <div className="text-center md:text-left">
+                      <h3 className="font-semibold text-foreground">{t('scenarios.localDev.title')}</h3>
+                      <p className="text-sm text-muted-foreground">{t('scenarios.localDev.description')}</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-5 bg-card/30 text-center md:text-left">
+                  <pre className="text-sm font-mono text-foreground whitespace-pre-wrap mb-3">{t('scenarios.localDev.code')}</pre>
+                  <pre className="text-sm font-mono text-muted-foreground whitespace-pre-wrap">{t('scenarios.localDev.happening')}</pre>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Tests */}
+            <Card className="border-border/50 overflow-hidden">
+              <CardContent className="p-0">
+                <div className="p-5 border-b border-border/50">
+                  <div className="flex items-center gap-3 justify-center md:justify-start">
+                    <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center">
+                      <FlaskConical className="w-5 h-5 text-muted-foreground" />
+                    </div>
+                    <div className="text-center md:text-left">
+                      <h3 className="font-semibold text-foreground">{t('scenarios.tests.title')}</h3>
+                      <p className="text-sm text-muted-foreground">{t('scenarios.tests.description')}</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-5 bg-card/30 text-center md:text-left">
+                  <pre className="text-sm font-mono text-foreground whitespace-pre-wrap mb-3">{t('scenarios.tests.code')}</pre>
+                  <pre className="text-sm font-mono text-muted-foreground whitespace-pre-wrap">{t('scenarios.tests.happening')}</pre>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* CI/CD */}
+            <Card className="border-border/50 overflow-hidden">
+              <CardContent className="p-0">
+                <div className="p-5 border-b border-border/50">
+                  <div className="flex items-center gap-3 justify-center md:justify-start">
+                    <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center">
+                      <GitBranch className="w-5 h-5 text-muted-foreground" />
+                    </div>
+                    <div className="text-center md:text-left">
+                      <h3 className="font-semibold text-foreground">{t('scenarios.cicd.title')}</h3>
+                      <p className="text-sm text-muted-foreground">{t('scenarios.cicd.description')}</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-5 bg-card/30 text-center md:text-left">
+                  <pre className="text-sm font-mono text-foreground whitespace-pre-wrap mb-3">{t('scenarios.cicd.code')}</pre>
+                  <pre className="text-sm font-mono text-muted-foreground whitespace-pre-wrap">{t('scenarios.cicd.happening')}</pre>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Prod */}
+            <Card className="border-border/50 overflow-hidden">
+              <CardContent className="p-0">
+                <div className="p-5 border-b border-border/50">
+                  <div className="flex items-center gap-3 justify-center md:justify-start">
+                    <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center">
+                      <Rocket className="w-5 h-5 text-muted-foreground" />
+                    </div>
+                    <div className="text-center md:text-left">
+                      <h3 className="font-semibold text-foreground">{t('scenarios.prod.title')}</h3>
+                      <p className="text-sm text-muted-foreground">{t('scenarios.prod.description')}</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-5 bg-card/30 text-center md:text-left">
+                  <pre className="text-sm font-mono text-foreground whitespace-pre-wrap mb-3">{t('scenarios.prod.code')}</pre>
+                  <pre className="text-sm font-mono text-muted-foreground whitespace-pre-wrap">{t('scenarios.prod.happening')}</pre>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Conclusion */}
+          <div className="text-center mt-12">
+            <p className="text-lg text-muted-foreground">
+              {t('scenarios.conclusion')}
+            </p>
+            <p className="text-lg font-semibold text-foreground">
+              {t('scenarios.conclusionHighlight')}
+            </p>
+          </div>
         </div>
       </section>
 
       <Separator className="max-w-6xl mx-auto bg-border/40" />
-
-      {/* Why Section */}
-      <section className="py-20">
-        <div className="mx-auto max-w-3xl px-6">
-          <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
-            <CardContent className="p-8 text-center">
-              <h2 className="text-2xl font-semibold text-foreground mb-4">
-                {t('why.title')}
-              </h2>
-              <p className="text-muted-foreground mb-6">{t('why.description')}</p>
-
-              <ul className="space-y-3 mb-6 inline-block text-left">
-                <li className="flex items-start gap-3 text-muted-foreground">
-                  <span className="text-crab mt-1">•</span>
-                  <span>
-                    {t('why.items.testing.before')}
-                    <span className="text-crab">{t('why.items.testing.highlight')}</span>
-                    {t('why.items.testing.after')}
-                  </span>
-                </li>
-                <li className="flex items-start gap-3 text-muted-foreground">
-                  <span className="text-crab mt-1">•</span>
-                  <span>
-                    {t('why.items.prototyping.before')}
-                    <span className="text-crab">{t('why.items.prototyping.highlight')}</span>
-                    {t('why.items.prototyping.after')}
-                  </span>
-                </li>
-                <li className="flex items-start gap-3 text-muted-foreground">
-                  <span className="text-crab mt-1">•</span>
-                  <span>
-                    {t('why.items.platform.before')}
-                    <span className="text-crab">{t('why.items.platform.highlight')}</span>
-                    {t('why.items.platform.after')}
-                  </span>
-                </li>
-                <li className="flex items-start gap-3 text-muted-foreground">
-                  <span className="text-crab mt-1">•</span>
-                  <span>
-                    {t('why.items.simulation.before')}
-                    <span className="text-crab">{t('why.items.simulation.highlight')}</span>
-                    {t('why.items.simulation.after')}
-                  </span>
-                </li>
-                <li className="flex items-start gap-3 text-muted-foreground">
-                  <span className="text-crab mt-1">•</span>
-                  <span>
-                    {t('why.items.swarm.before')}
-                    <span className="text-crab">{t('why.items.swarm.highlight')}</span>
-                    {t('why.items.swarm.after')}
-                    <Badge variant="outline" className="ml-2 text-xs">
-                      soon
-                    </Badge>
-                  </span>
-                </li>
-              </ul>
-
-              <p className="text-foreground font-medium">{t('why.conclusion')}</p>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
 
       {/* Three Ways */}
       <section className="py-20 bg-muted/30">
@@ -201,11 +258,11 @@ $ curl -X POST localhost:8080/chat \\
             <Card className="border-border/50 overflow-hidden">
               <CardContent className="p-0">
                 <div className="p-5 border-b border-border/50">
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3 justify-center lg:justify-start">
                     <div className="w-9 h-9 rounded-lg bg-muted flex items-center justify-center">
                       <Code2 className="w-4 h-4 text-muted-foreground" />
                     </div>
-                    <div>
+                    <div className="text-center lg:text-left">
                       <h3 className="font-semibold text-foreground">{t('ways.sdk')}</h3>
                       <p className="text-xs text-muted-foreground">{t('ways.sdkDesc')}</p>
                     </div>
@@ -218,11 +275,11 @@ $ curl -X POST localhost:8080/chat \\
             <Card className="border-border/50 overflow-hidden">
               <CardContent className="p-0">
                 <div className="p-5 border-b border-border/50">
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3 justify-center lg:justify-start">
                     <div className="w-9 h-9 rounded-lg bg-muted flex items-center justify-center">
                       <Terminal className="w-4 h-4 text-muted-foreground" />
                     </div>
-                    <div>
+                    <div className="text-center lg:text-left">
                       <h3 className="font-semibold text-foreground">{t('ways.cli')}</h3>
                       <p className="text-xs text-muted-foreground">{t('ways.cliDesc')}</p>
                     </div>
@@ -235,11 +292,11 @@ $ curl -X POST localhost:8080/chat \\
             <Card className="border-border/50 overflow-hidden">
               <CardContent className="p-0">
                 <div className="p-5 border-b border-border/50">
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3 justify-center lg:justify-start">
                     <div className="w-9 h-9 rounded-lg bg-muted flex items-center justify-center">
                       <Server className="w-4 h-4 text-muted-foreground" />
                     </div>
-                    <div>
+                    <div className="text-center lg:text-left">
                       <h3 className="font-semibold text-foreground">{t('ways.docker')}</h3>
                       <p className="text-xs text-muted-foreground">{t('ways.dockerDesc')}</p>
                     </div>
@@ -264,8 +321,8 @@ $ curl -X POST localhost:8080/chat \\
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {features.map(({ icon: Icon, key }) => (
-              <div key={key} className="p-5">
-                <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center mb-4">
+              <div key={key} className="p-5 text-center sm:text-left">
+                <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center mb-4 mx-auto sm:mx-0">
                   <Icon className="w-5 h-5 text-muted-foreground" />
                 </div>
                 <h3 className="font-semibold text-foreground mb-1">

@@ -11,47 +11,48 @@
   },
   "hero": {
     "badge": "Developer Experience First",
-    "title": "Spawn AI Agents",
-    "titleHighlight": "in Seconds",
-    "description": "The fastest way to get an AI agent running. One line of code, instant agent.",
+    "title": "You're building something",
+    "titleHighlight": "for AI agents.",
+    "subtitle": "You need one running — for your test.",
+    "flowDev": "Dev",
+    "flowTest": "Test",
+    "flowCI": "CI",
+    "flowProd": "Prod",
+    "command": "$ tinycrab spawn dev",
+    "commandResult": "🦀 Running on :8080",
+    "commandCaption": "One line. Running in seconds.",
     "getStarted": "Get Started",
     "imAnAgent": "I'm an AI Agent"
   },
-  "spawn": {
-    "title": "Watch them spawn",
-    "description": "Each crab is an independent agent with its own workspace, memory, and tools."
-  },
-  "why": {
-    "title": "Built for Speed",
-    "description": "You're building something that involves AI agents. You need one running now.",
-    "items": {
-      "testing": {
-        "before": "Testing how your app handles ",
-        "highlight": "AI responses",
-        "after": ""
-      },
-      "prototyping": {
-        "before": "Prototyping an ",
-        "highlight": "AI-powered workflow",
-        "after": ""
-      },
-      "platform": {
-        "before": "Building an ",
-        "highlight": "AI-agent-first",
-        "after": " platform"
-      },
-      "simulation": {
-        "before": "Creating ",
-        "highlight": "multi-agent",
-        "after": " simulations"
-      },
-      "swarm": {
-        "before": "Spawning ",
-        "highlight": "agent swarms",
-        "after": ""
-      }
+  "scenarios": {
+    "title": "One agent. From dev to prod.",
+    "subtitle": "Same tinycrab everywhere.",
+    "localDev": {
+      "title": "Local Dev",
+      "description": "Debug your agent integration",
+      "code": "$ tinycrab spawn dev\n🦀 Agent running on :8080",
+      "happening": "Your MCP server logs:\n→ Agent called weather-api\n→ Agent called search-api"
     },
-    "conclusion": "You don't need the most powerful agent. You need an AI agent running right now."
+    "tests": {
+      "title": "Tests",
+      "description": "Multiple agents test your platform",
+      "code": "🦀🦀🦀 3 agents simultaneously:",
+      "happening": "→ calling your MCP server\n→ using your skill.md\n→ testing concurrency"
+    },
+    "cicd": {
+      "title": "CI/CD",
+      "description": "Runs on every PR",
+      "code": "- run: tinycrab spawn ci\n- run: npm test",
+      "happening": "Same agent as local\nAutomatic verification"
+    },
+    "prod": {
+      "title": "Prod",
+      "description": "Production deployment",
+      "code": "$ docker run tinycrab\n🦀 Agent running on :8080",
+      "happening": "Same agent, runs anywhere\nRegression testing in prod"
+    },
+    "conclusion": "You don't need the most powerful agent.",
+    "conclusionHighlight": "You need an AI agent running right now."
   },
   "features": {
     "title": "What You Get",

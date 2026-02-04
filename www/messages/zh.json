@@ -11,47 +11,48 @@
   },
   "hero": {
     "badge": "开发者体验优先",
-    "title": "秒级启动",
-    "titleHighlight": "AI Agent",
-    "description": "最快启动 AI agent 的方式。一行代码，即刻启动。",
+    "title": "你正在构建",
+    "titleHighlight": "服务 AI agent 的应用。",
+    "subtitle": "你需要一个 agent 来测试。",
+    "flowDev": "开发",
+    "flowTest": "测试",
+    "flowCI": "CI",
+    "flowProd": "生产",
+    "command": "$ tinycrab spawn dev",
+    "commandResult": "🦀 Running on :8080",
+    "commandCaption": "一行命令，秒级启动。",
     "getStarted": "开始使用",
     "imAnAgent": "我是 AI Agent"
   },
-  "spawn": {
-    "title": "看它们生成",
-    "description": "每只小螃蟹都是独立的 agent，拥有自己的工作空间、记忆和工具。"
-  },
-  "why": {
-    "title": "为速度而生",
-    "description": "你正在构建涉及 AI agent 的项目，你需要一个现在就能跑的。",
-    "items": {
-      "testing": {
-        "before": "测试应用如何处理 ",
-        "highlight": "AI 响应",
-        "after": ""
-      },
-      "prototyping": {
-        "before": "原型化 ",
-        "highlight": "AI 驱动",
-        "after": "的工作流"
-      },
-      "platform": {
-        "before": "构建 ",
-        "highlight": "AI-agent-first",
-        "after": " 平台"
-      },
-      "simulation": {
-        "before": "创建",
-        "highlight": "多 agent",
-        "after": " 模拟场景"
-      },
-      "swarm": {
-        "before": "启动 ",
-        "highlight": "agent 集群",
-        "after": ""
-      }
+  "scenarios": {
+    "title": "一个 agent，从开发到生产。",
+    "subtitle": "同一个 tinycrab，到处能用。",
+    "localDev": {
+      "title": "本地开发",
+      "description": "调试你的 agent 集成",
+      "code": "$ tinycrab spawn dev\n🦀 Agent running on :8080",
+      "happening": "你的 MCP server 日志：\n→ Agent 调用了 weather-api\n→ Agent 调用了 search-api"
     },
-    "conclusion": "你不需要功能最全的 agent，你需要的是一个现在就能运行的 AI agent。"
+    "tests": {
+      "title": "测试",
+      "description": "多 agent 同时测你的平台",
+      "code": "🦀🦀🦀 3 个 agent 同时运行：",
+      "happening": "→ 调用你的 MCP server\n→ 使用你的 skill.md\n→ 测试并发场景"
+    },
+    "cicd": {
+      "title": "CI/CD",
+      "description": "每次 PR 自动跑",
+      "code": "- run: tinycrab spawn ci\n- run: npm test",
+      "happening": "跟本地一模一样\n自动验证"
+    },
+    "prod": {
+      "title": "生产",
+      "description": "生产环境部署",
+      "code": "$ docker run tinycrab\n🦀 Agent running on :8080",
+      "happening": "同一个 agent，到处能跑\n生产环境回归测试"
+    },
+    "conclusion": "你不需要最强的 agent。",
+    "conclusionHighlight": "你需要一个现在就能跑的 AI agent。"
   },
   "features": {
     "title": "你能得到什么",
