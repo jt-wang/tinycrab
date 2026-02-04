@@ -54,7 +54,7 @@ export function Footer() {
             <h4 className="font-medium text-sm text-foreground mb-4">{t('deploy')}</h4>
             <ul className="space-y-2.5 text-sm">
               <li>
-                <Link href="/docs/deploy" className="text-muted-foreground hover:text-foreground transition-colors">
+                <Link href="/docs/deploy#docker" className="text-muted-foreground hover:text-foreground transition-colors">
                   Docker
                 </Link>
               </li>
@@ -66,6 +66,11 @@ export function Footer() {
               <li>
                 <Link href="/docs/deploy#flyio" className="text-muted-foreground hover:text-foreground transition-colors">
                   Fly.io
+                </Link>
+              </li>
+              <li>
+                <Link href="/docs/deploy#render" className="text-muted-foreground hover:text-foreground transition-colors">
+                  Render
                 </Link>
               </li>
             </ul>

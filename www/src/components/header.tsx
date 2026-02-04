@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useTranslations, useLocale } from 'next-intl';
 import { Button } from '@/components/ui/button';
 import { LanguageSwitcher } from './language-switcher';
+import { ThemeToggle } from './theme-toggle';
 import { CrabIcon } from './crab-icon';
 import { Github, Menu, X } from 'lucide-react';
 import { useState } from 'react';
@@ -50,6 +51,7 @@ export function Header() {
           >
             <Github className="w-5 h-5" />
           </a>
+          <ThemeToggle />
           <LanguageSwitcher />
         </nav>
 
@@ -87,7 +89,8 @@ export function Header() {
             <Github className="w-4 h-4" />
             GitHub
           </a>
-          <div className="pt-2">
+          <div className="pt-2 flex items-center gap-2">
+            <ThemeToggle />
             <LanguageSwitcher />
           </div>
         </nav>

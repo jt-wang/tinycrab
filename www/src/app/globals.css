@@ -128,6 +128,10 @@
   body {
     @apply bg-background text-foreground;
   }
+  /* Scroll margin for anchor links (accounts for sticky header) */
+  [id] {
+    scroll-margin-top: 5rem;
+  }
 }
 
 /* Crystal clear aesthetic */
