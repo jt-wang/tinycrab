@@ -1,0 +1,23 @@
+services:
+  tinycrab:
+    image: ghcr.io/jt-wang/tinycrab:latest
+    # Or build locally: build: .
+    ports:
+      - "${AGENT_PORT:-8080}:8080"
+    environment:
+      # Provider API key (use one based on AGENT_PROVIDER)
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
+      - GEMINI_API_KEY=${GEMINI_API_KEY:-}
+      - GROQ_API_KEY=${GROQ_API_KEY:-}
+      # Agent config (defaults: openai/gpt-4o)
+      - AGENT_PROVIDER=${AGENT_PROVIDER:-openai}
+      - AGENT_MODEL=${AGENT_MODEL:-gpt-4o}
+    volumes:
+      - tinycrab-workspace:/app/workspace
+      - tinycrab-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  tinycrab-workspace:
+  tinycrab-data:

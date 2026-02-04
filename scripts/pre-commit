@@ -1,0 +1,37 @@
+#!/bin/bash
+#
+# Pre-commit hook for tinycrab
+#
+# Install with: cp scripts/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit
+#
+# Runs:
+# - Build (always)
+# - Unit tests (always)
+# - E2E tests (optional, if PRECOMMIT_E2E=1 is set)
+#
+
+set -e
+
+echo "==> Running pre-commit checks..."
+
+# Build
+echo "==> Building..."
+npm run build
+
+# Unit tests (always run)
+echo "==> Running unit tests..."
+npm run test
+
+# E2E tests (optional - requires API key and PRECOMMIT_E2E=1)
+if [ "$PRECOMMIT_E2E" = "1" ]; then
+    if [ -n "$OPENAI_API_KEY" ] || [ -n "$ANTHROPIC_API_KEY" ]; then
+        echo "==> Running e2e tests (PRECOMMIT_E2E=1)..."
+        npm run test:e2e
+    else
+        echo "==> Skipping e2e tests (no API key configured)"
+    fi
+else
+    echo "==> Skipping e2e tests (set PRECOMMIT_E2E=1 to enable)"
+fi
+
+echo "==> Pre-commit checks passed!"

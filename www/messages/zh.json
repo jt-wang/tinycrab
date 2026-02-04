@@ -1,0 +1,205 @@
+{
+  "metadata": {
+    "title": "tinycrab - 秒级启动 AI Agent",
+    "description": "最快启动 AI agent 的方式。SDK、CLI 和 HTTP API，快速原型开发。"
+  },
+  "nav": {
+    "docs": "文档",
+    "quickstart": "快速开始",
+    "forAgents": "AI Agent 专用",
+    "github": "GitHub"
+  },
+  "hero": {
+    "badge": "开发者体验优先",
+    "title": "秒级启动",
+    "titleHighlight": "AI Agent",
+    "description": "最快启动 AI agent 的方式。一行代码，即刻启动。",
+    "getStarted": "开始使用",
+    "imAnAgent": "我是 AI Agent"
+  },
+  "spawn": {
+    "title": "看它们生成",
+    "description": "每只小螃蟹都是独立的 agent，拥有自己的工作空间、记忆和工具。"
+  },
+  "why": {
+    "title": "为速度而生",
+    "description": "你正在构建涉及 AI agent 的项目，你需要一个现在就能跑的。",
+    "items": {
+      "testing": "测试应用如何处理 AI 响应",
+      "prototyping": "原型化 AI 驱动的工作流",
+      "platform": "构建 AI-agent-first 平台",
+      "simulation": "创建多 agent 模拟场景",
+      "swarm": "启动 agent 集群（即将推出）"
+    },
+    "conclusion": "你不需要功能最全的 agent，你需要的是一个现在就能运行的 AI agent。"
+  },
+  "features": {
+    "title": "你能得到什么",
+    "description": "够用就好，不多不少。",
+    "coding": {
+      "title": "完整编程能力",
+      "description": "bash, read, write, edit, grep, find"
+    },
+    "workspace": {
+      "title": "独立工作空间",
+      "description": "每个 agent 有自己的目录"
+    },
+    "session": {
+      "title": "会话持久化",
+      "description": "带上下文的多轮对话"
+    },
+    "memory": {
+      "title": "跨会话记忆",
+      "description": "remember/recall 持久化知识"
+    },
+    "providers": {
+      "title": "8 个 LLM 提供商",
+      "description": "OpenAI, Anthropic, Google 等"
+    },
+    "selfSpawn": {
+      "title": "自我生成",
+      "description": "agent 可以通过 bash 启动新 agent"
+    }
+  },
+  "ways": {
+    "title": "三种启动方式",
+    "description": "选择你的接口，底层是同一个 agent。",
+    "sdk": "SDK",
+    "sdkDesc": "用于 TypeScript/JavaScript 项目",
+    "cli": "CLI",
+    "cliDesc": "用于终端快速测试",
+    "docker": "Docker",
+    "dockerDesc": "用于 CI/CD 或云端部署"
+  },
+  "deploy": {
+    "title": "随处运行",
+    "description": "同样的代码，同样的行为。本地测试，随处部署。"
+  },
+  "cta": {
+    "ready": "准备好启动了吗？",
+    "future": "下版本预告：Agent Swarm - 协调多个 agent 协同工作"
+  },
+  "footer": {
+    "tagline": "秒级启动 AI agent。",
+    "docs": "文档",
+    "deploy": "部署",
+    "community": "社区",
+    "issues": "问题反馈",
+    "forAgents": "AI Agent 专用",
+    "copyright": "tinycrab. MIT 许可证。",
+    "builtFor": "为追求效率的开发者而生。"
+  },
+  "agents": {
+    "title": "AI Agent 专用",
+    "description": "需要启动一个 worker agent？tinycrab 让你秒级获得一个运行中的 AI agent。",
+    "reference": "机器可读参考",
+    "quickStart": "快速开始",
+    "capabilities": "Agent 能力",
+    "toolsFrom": "工具来自",
+    "tools": {
+      "bash": "运行 shell 命令",
+      "read": "读取文件",
+      "write": "创建/覆盖文件",
+      "edit": "编辑现有文件",
+      "grep": "搜索文件内容",
+      "find": "查找文件",
+      "ls": "列出目录",
+      "memory": "持久化记忆"
+    },
+    "session": "会话持久化",
+    "sessionDesc": "保存响应中的 session_id 以继续对话",
+    "fullRef": "完整参考"
+  },
+  "docs": {
+    "index": {
+      "title": "文档",
+      "description": "关于 tinycrab 你需要知道的一切。",
+      "quickstart": {
+        "title": "快速开始",
+        "description": "5 分钟内启动 tinycrab。"
+      },
+      "sdk": {
+        "title": "SDK 参考",
+        "description": "在 TypeScript/JavaScript 中编程使用 tinycrab。"
+      },
+      "cli": {
+        "title": "CLI 参考",
+        "description": "用于快速测试的命令行界面。"
+      },
+      "api": {
+        "title": "HTTP API",
+        "description": "与 agent 交互的 REST 端点。"
+      },
+      "deploy": {
+        "title": "部署",
+        "description": "部署到 Docker、Railway、Fly.io 或 Render。"
+      }
+    },
+    "quickstart": {
+      "title": "快速开始",
+      "description": "5 分钟内启动 tinycrab。",
+      "prerequisites": "前置条件",
+      "prereq1": "Node.js 20 或更高版本",
+      "prereq2": "来自 OpenAI、Anthropic 或其他支持的提供商的 API 密钥",
+      "step1": "1. 安装",
+      "step2": "2. 设置 API 密钥",
+      "step3": "3. 启动 Agent",
+      "step4": "4. 与 Agent 对话",
+      "step5": "5. 管理 Agent",
+      "nextSteps": "下一步"
+    },
+    "sdk": {
+      "title": "SDK 参考",
+      "description": "在你的 TypeScript/JavaScript 项目中编程使用 tinycrab。",
+      "installation": "安装",
+      "basicUsage": "基本用法",
+      "tinycrabClass": "Tinycrab 类",
+      "agentMethods": "Agent 方法"
+    },
+    "cli": {
+      "title": "CLI 参考",
+      "description": "tinycrab 命令行界面完整指南。",
+      "spawn": "spawn",
+      "spawnDesc": "创建并启动新 agent。",
+      "chat": "chat",
+      "chatDesc": "向 agent 发送消息。",
+      "list": "list",
+      "listDesc": "列出所有 agent。",
+      "stop": "stop",
+      "stopDesc": "停止 agent（保留文件）。",
+      "cleanup": "cleanup",
+      "cleanupDesc": "停止 agent 并删除所有文件。"
+    },
+    "api": {
+      "title": "HTTP API",
+      "description": "与 agent 交互的 REST API 端点。",
+      "postChat": "POST /chat",
+      "postChatDesc": "向 agent 发送消息。",
+      "response": "响应",
+      "getHealth": "GET /health",
+      "getHealthDesc": "检查 agent 是否在运行。",
+      "getSessions": "GET /sessions",
+      "getSessionsDesc": "列出此 agent 的所有会话。"
+    },
+    "deploy": {
+      "title": "部署",
+      "description": "将 tinycrab 部署到 Docker、Railway、Fly.io 或 Render。",
+      "docker": "Docker",
+      "dockerDesc": "在容器中运行 tinycrab：",
+      "dockerCompose": "Docker Compose",
+      "railway": "Railway",
+      "railwayDesc": "一键部署到 Railway：",
+      "railwayEnv": "在环境变量中设置 OPENAI_API_KEY。",
+      "flyio": "Fly.io",
+      "flyioDesc": "部署到 Fly.io：",
+      "render": "Render",
+      "renderDesc": "部署到 Render：",
+      "renderSteps": {
+        "step1": "创建新的 Web 服务",
+        "step2": "选择「从注册表部署现有镜像」",
+        "step3": "使用镜像：ghcr.io/jt-wang/tinycrab",
+        "step4": "添加环境变量 OPENAI_API_KEY"
+      }
+    }
+  }
+}

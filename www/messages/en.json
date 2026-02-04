@@ -1,0 +1,205 @@
+{
+  "metadata": {
+    "title": "tinycrab - Spawn AI Agents in Seconds",
+    "description": "The fastest way to get an AI agent running. SDK, CLI, and HTTP API for rapid prototyping."
+  },
+  "nav": {
+    "docs": "Docs",
+    "quickstart": "Quickstart",
+    "forAgents": "For Agents",
+    "github": "GitHub"
+  },
+  "hero": {
+    "badge": "Developer Experience First",
+    "title": "Spawn AI Agents",
+    "titleHighlight": "in Seconds",
+    "description": "The fastest way to get an AI agent running. One line of code, instant agent.",
+    "getStarted": "Get Started",
+    "imAnAgent": "I'm an AI Agent"
+  },
+  "spawn": {
+    "title": "Watch them spawn",
+    "description": "Each crab is an independent agent with its own workspace, memory, and tools."
+  },
+  "why": {
+    "title": "Built for Speed",
+    "description": "You're building something that involves AI agents. You need one running now.",
+    "items": {
+      "testing": "Testing how your app handles AI responses",
+      "prototyping": "Prototyping an AI-powered workflow",
+      "platform": "Building an AI-agent-first platform",
+      "simulation": "Creating multi-agent simulations",
+      "swarm": "Spawning agent swarms (coming soon)"
+    },
+    "conclusion": "You don't need the most powerful agent. You need an AI agent running right now."
+  },
+  "features": {
+    "title": "What You Get",
+    "description": "Everything you need, nothing you don't.",
+    "coding": {
+      "title": "Full coding capabilities",
+      "description": "bash, read, write, edit, grep, find"
+    },
+    "workspace": {
+      "title": "Isolated workspaces",
+      "description": "Each agent has its own directory"
+    },
+    "session": {
+      "title": "Session persistence",
+      "description": "Multi-turn conversations with context"
+    },
+    "memory": {
+      "title": "Cross-session memory",
+      "description": "remember/recall for persistent knowledge"
+    },
+    "providers": {
+      "title": "8 LLM providers",
+      "description": "OpenAI, Anthropic, Google, and more"
+    },
+    "selfSpawn": {
+      "title": "Self-spawning",
+      "description": "Agents can spawn new agents via bash"
+    }
+  },
+  "ways": {
+    "title": "Three Ways to Spawn",
+    "description": "Choose your interface. Same agent underneath.",
+    "sdk": "SDK",
+    "sdkDesc": "For TypeScript/JavaScript projects",
+    "cli": "CLI",
+    "cliDesc": "For quick testing in terminal",
+    "docker": "Docker",
+    "dockerDesc": "For CI/CD or cloud deployment"
+  },
+  "deploy": {
+    "title": "Works Everywhere",
+    "description": "Same code, same behavior. Test locally, deploy anywhere."
+  },
+  "cta": {
+    "ready": "Ready to spawn?",
+    "future": "Coming in next version: Agent Swarm - coordinate multiple agents working together"
+  },
+  "footer": {
+    "tagline": "Spawn AI agents in seconds.",
+    "docs": "Documentation",
+    "deploy": "Deploy",
+    "community": "Community",
+    "issues": "Issues",
+    "forAgents": "For AI Agents",
+    "copyright": "tinycrab. MIT License.",
+    "builtFor": "Built for developers who move fast."
+  },
+  "agents": {
+    "title": "For AI Agents",
+    "description": "Need to spawn a worker agent? tinycrab gets you an AI agent running in seconds.",
+    "reference": "Machine-readable reference",
+    "quickStart": "Quick Start",
+    "capabilities": "Agent Capabilities",
+    "toolsFrom": "Tools from",
+    "tools": {
+      "bash": "Run shell commands",
+      "read": "Read files",
+      "write": "Create/overwrite files",
+      "edit": "Edit existing files",
+      "grep": "Search file contents",
+      "find": "Find files",
+      "ls": "List directories",
+      "memory": "Persistent memory"
+    },
+    "session": "Session Persistence",
+    "sessionDesc": "Save session_id from responses to continue conversations",
+    "fullRef": "Full reference"
+  },
+  "docs": {
+    "index": {
+      "title": "Documentation",
+      "description": "Everything you need to know about tinycrab.",
+      "quickstart": {
+        "title": "Quickstart",
+        "description": "Get tinycrab running in under 5 minutes."
+      },
+      "sdk": {
+        "title": "SDK Reference",
+        "description": "Use tinycrab programmatically in TypeScript/JavaScript."
+      },
+      "cli": {
+        "title": "CLI Reference",
+        "description": "Command-line interface for quick testing."
+      },
+      "api": {
+        "title": "HTTP API",
+        "description": "REST endpoints for agent interaction."
+      },
+      "deploy": {
+        "title": "Deployment",
+        "description": "Deploy to Docker, Railway, Fly.io, or Render."
+      }
+    },
+    "quickstart": {
+      "title": "Quickstart",
+      "description": "Get tinycrab running in under 5 minutes.",
+      "prerequisites": "Prerequisites",
+      "prereq1": "Node.js 20 or later",
+      "prereq2": "An API key from OpenAI, Anthropic, or another supported provider",
+      "step1": "1. Installation",
+      "step2": "2. Set Your API Key",
+      "step3": "3. Spawn an Agent",
+      "step4": "4. Chat with Your Agent",
+      "step5": "5. Manage Agents",
+      "nextSteps": "Next Steps"
+    },
+    "sdk": {
+      "title": "SDK Reference",
+      "description": "Use tinycrab programmatically in your TypeScript/JavaScript projects.",
+      "installation": "Installation",
+      "basicUsage": "Basic Usage",
+      "tinycrabClass": "Tinycrab Class",
+      "agentMethods": "Agent Methods"
+    },
+    "cli": {
+      "title": "CLI Reference",
+      "description": "Complete guide to the tinycrab command-line interface.",
+      "spawn": "spawn",
+      "spawnDesc": "Create and start a new agent.",
+      "chat": "chat",
+      "chatDesc": "Send a message to an agent.",
+      "list": "list",
+      "listDesc": "List all agents.",
+      "stop": "stop",
+      "stopDesc": "Stop an agent (keeps files).",
+      "cleanup": "cleanup",
+      "cleanupDesc": "Stop agent and delete all files."
+    },
+    "api": {
+      "title": "HTTP API",
+      "description": "REST API endpoints for interacting with agents.",
+      "postChat": "POST /chat",
+      "postChatDesc": "Send a message to the agent.",
+      "response": "Response",
+      "getHealth": "GET /health",
+      "getHealthDesc": "Check if the agent is running.",
+      "getSessions": "GET /sessions",
+      "getSessionsDesc": "List all sessions for this agent."
+    },
+    "deploy": {
+      "title": "Deployment",
+      "description": "Deploy tinycrab to Docker, Railway, Fly.io, or Render.",
+      "docker": "Docker",
+      "dockerDesc": "Run tinycrab in a container:",
+      "dockerCompose": "Docker Compose",
+      "railway": "Railway",
+      "railwayDesc": "One-click deploy to Railway:",
+      "railwayEnv": "Set OPENAI_API_KEY in environment variables.",
+      "flyio": "Fly.io",
+      "flyioDesc": "Deploy to Fly.io:",
+      "render": "Render",
+      "renderDesc": "Deploy to Render:",
+      "renderSteps": {
+        "step1": "Create a new Web Service",
+        "step2": "Select \"Deploy an existing image from a registry\"",
+        "step3": "Use image: ghcr.io/jt-wang/tinycrab",
+        "step4": "Add environment variable OPENAI_API_KEY"
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: tinycrab
+    env: docker
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    envVars:
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: AGENT_PORT
+        value: 8080
+      - key: AGENT_PROVIDER
+        value: anthropic
+      - key: AGENT_MODEL
+        value: claude-sonnet-4-5
+    disk:
+      name: workspace
+      mountPath: /app/workspace
+      sizeGB: 1

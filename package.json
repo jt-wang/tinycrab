@@ -1,0 +1,72 @@
+{
+  "name": "tinycrab",
+  "version": "0.1.0",
+  "description": "Lightweight universal agent - self-hosted or cloud deployed",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.js",
+  "bin": {
+    "tinycrab": "dist/cli/index.js"
+  },
+  "exports": {
+    ".": "./dist/sdk/index.js",
+    "./sdk": "./dist/sdk/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:e2e": "vitest run --config vitest.e2e.config.ts",
+    "test:e2e:docker": "vitest run --config vitest.e2e.config.ts docker.e2e",
+    "test:all": "npm run test && npm run test:e2e",
+    "precommit": "npm run build && npm run test",
+    "precommit:full": "npm run build && npm run test && npm run test:e2e",
+    "prepare": "[ -d .git ] && cp scripts/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit || true",
+    "docker:build": "docker build -t tinycrab .",
+    "docker:run": "docker run -p 8080:8080 -e OPENAI_API_KEY tinycrab",
+    "site:dev": "npm run dev --prefix www",
+    "site:build": "npm run build --prefix www",
+    "site:preview": "npm run preview --prefix www",
+    "site:test": "npm test --prefix www"
+  },
+  "dependencies": {
+    "@mariozechner/pi-ai": "^0.51.2",
+    "@mariozechner/pi-coding-agent": "^0.51.2",
+    "@sinclair/typebox": "^0.34.48",
+    "cron-parser": "^4.9.0",
+    "fastify": "^4.28.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@vitest/coverage-v8": "^1.6.0",
+    "dotenv": "^17.2.3",
+    "tsx": "^4.0.0",
+    "typescript": "^5.4.0",
+    "vitest": "^1.6.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "keywords": [
+    "agent",
+    "ai",
+    "llm",
+    "coding-assistant",
+    "self-hosted"
+  ],
+  "author": "Jingtao Wang",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jt-wang/tinycrab.git"
+  },
+  "homepage": "https://tinycrab.dev",
+  "bugs": {
+    "url": "https://github.com/jt-wang/tinycrab/issues"
+  }
+}
