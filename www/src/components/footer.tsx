@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { CrabIcon } from './crab-icon';
+import { AnchorLink } from './anchor-link';
 import { Github } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 
@@ -54,24 +55,24 @@ export function Footer() {
             <h4 className="font-medium text-sm text-foreground mb-4">{t('deploy')}</h4>
             <ul className="space-y-2.5 text-sm">
               <li>
-                <Link href="/docs/deploy#docker" className="text-muted-foreground hover:text-foreground transition-colors">
+                <AnchorLink href="/docs/deploy#docker" className="text-muted-foreground hover:text-foreground transition-colors">
                   Docker
-                </Link>
+                </AnchorLink>
               </li>
               <li>
-                <Link href="/docs/deploy#railway" className="text-muted-foreground hover:text-foreground transition-colors">
+                <AnchorLink href="/docs/deploy#railway" className="text-muted-foreground hover:text-foreground transition-colors">
                   Railway
-                </Link>
+                </AnchorLink>
               </li>
               <li>
-                <Link href="/docs/deploy#flyio" className="text-muted-foreground hover:text-foreground transition-colors">
+                <AnchorLink href="/docs/deploy#flyio" className="text-muted-foreground hover:text-foreground transition-colors">
                   Fly.io
-                </Link>
+                </AnchorLink>
               </li>
               <li>
-                <Link href="/docs/deploy#render" className="text-muted-foreground hover:text-foreground transition-colors">
+                <AnchorLink href="/docs/deploy#render" className="text-muted-foreground hover:text-foreground transition-colors">
                   Render
-                </Link>
+                </AnchorLink>
               </li>
             </ul>
           </div>
